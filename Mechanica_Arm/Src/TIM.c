@@ -27,6 +27,12 @@ extern TI_num TIunm;
 extern u16 X_TI_stuta;
 extern u16 Y_TI_stuta;
 extern u16 Z_TI_stuta;
+extern u8 Z_downn_fla_1;
+extern u8 Z_downn_fla_2;
+extern u8 Z_downn_fla_3;
+extern u8 Z_downn_point_1;
+extern u8 Z_downn_point_2;
+extern u8 Z_downn_point_3;
 
 extern float Z_Accel_Freq	 [1000];
 extern u16 	 Z_Accel_Period[1000];
@@ -358,9 +364,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}
 			else if ( Z_TI_stuta == 0x0002 )
 			{
-
-				Z_TI_stuta=0x0004;	
-				
+				Z_downn_fla_1=1;
+				if(Z_downn_point_1==0)
+				{
+					Z_downn_fla_1=0;
+					Z_downn_point_1=2;
+					Z_TI_stuta=0x0004;	
+				}
 				
 			}
 			else if ( Z_TI_stuta == 0x0004 )
@@ -371,19 +381,36 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}
 			else if ( Z_TI_stuta & 0x0008 )
 			{
-
 				Z_TI_stuta=0x0010;
 			}
-			else if ( Z_TI_stuta == 0x0010 ) {Z_TI_stuta=0x0020;}
-			//else if ( Z_TI_stuta == 0x0020 ) {Z_TI_stuta=0x0040;}
+			else if ( Z_TI_stuta == 0x0010 )
+			{
+				Z_downn_fla_2 =1;
+				if(Z_downn_point_2==0)
+				{
+					Z_downn_fla_2=0;
+					Z_downn_point_2=2;
+					Z_TI_stuta=0x0020;	
+				}
+			}
+			else if ( Z_TI_stuta == 0x0020 ) {}
 			else if ( Z_TI_stuta == 0x0040 ) {Z_TI_stuta=0x0080;}
 			else if ( Z_TI_stuta == 0x0080 ) {Z_TI_stuta=0x0100;}
 			else if ( Z_TI_stuta == 0x0100 ) {Z_TI_stuta=0x0200;}
-			else if ( Z_TI_stuta == 0x0200 ) {Z_TI_stuta=0x0400;}
+			else if ( Z_TI_stuta == 0x0200 ) 
+			{
+				Z_downn_fla_3=1;
+				if(Z_downn_point_3==0)
+				{
+					Z_downn_fla_3=0;
+					Z_downn_point_3=2;
+					Z_TI_stuta=0x0400;	
+				}
+			}
 			else if ( Z_TI_stuta == 0x0400 ) {Z_TI_stuta=0x0800;}
 			else if ( Z_TI_stuta == 0x0800 ) {Z_TI_stuta=0x1000;}
-			else if ( Z_TI_stuta == 0x1000 ) {Z_TI_stuta=0x2000;}
-			else if ( Z_TI_stuta == 0x2000 ) {Z_TI_stuta=0x0002;}		
+			else if ( Z_TI_stuta == 0x1000 ) {Z_TI_stuta=0x0001;}
+			//else if ( Z_TI_stuta == 0x2000 ) {Z_TI_stuta=0x0002;}		
 		}
 	}
 	
@@ -438,15 +465,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				printf("Y_TIM6_TI_4\r\n");
 			}
 			else if ( Y_TI_stuta == 0x0010 ) {Y_TI_stuta=0x0020;}
-			//else if ( Y_TI_stuta == 0x0020 ) {Y_TI_stuta=0x0040;}
+			else if ( Y_TI_stuta == 0x0020 ) {}
 			else if ( Y_TI_stuta == 0x0040 ) {Y_TI_stuta=0x0080;}
 			else if ( Y_TI_stuta == 0x0080 ) {Y_TI_stuta=0x0100;}
 			else if ( Y_TI_stuta == 0x0100 ) {Y_TI_stuta=0x0200;}
 			else if ( Y_TI_stuta == 0x0200 ) {Y_TI_stuta=0x0400;}
 			else if ( Y_TI_stuta == 0x0400 ) {Y_TI_stuta=0x0800;}
 			else if ( Y_TI_stuta == 0x0800 ) {Y_TI_stuta=0x1000;}
-			else if ( Y_TI_stuta == 0x1000 ) {Y_TI_stuta=0x2000;}
-			else if ( Y_TI_stuta == 0x2000 ) {Y_TI_stuta=0x0002;}
+			else if ( Y_TI_stuta == 0x1000 ) {Y_TI_stuta=0x0001;}
+		//	else if ( Y_TI_stuta == 0x2000 ) {Y_TI_stuta=0x0002;}
 			
 		}
 	}
@@ -503,15 +530,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}
 			
 			else if ( X_TI_stuta == 0x0010 ) {X_TI_stuta=0x0020;}
-			//else if ( X_TI_stuta == 0x0020 ) {X_TI_stuta=0x0040;}
+			else if ( X_TI_stuta == 0x0020 ) {}
 			else if ( X_TI_stuta == 0x0040 ) {X_TI_stuta=0x0080;}
 			else if ( X_TI_stuta == 0x0080 ) {X_TI_stuta=0x0100;}
 			else if ( X_TI_stuta == 0x0100 ) {X_TI_stuta=0x0200;}
 			else if ( X_TI_stuta == 0x0200 ) {X_TI_stuta=0x0400;}
 			else if ( X_TI_stuta == 0x0400 ) {X_TI_stuta=0x0800;}
 			else if ( X_TI_stuta == 0x0800 ) {X_TI_stuta=0x1000;}
-			else if ( X_TI_stuta == 0x1000 ) {X_TI_stuta=0x2000;}
-			else if ( X_TI_stuta == 0x2000 ) {X_TI_stuta=0x0002;}
+			else if ( X_TI_stuta == 0x1000 ) {X_TI_stuta=0x0001;}
+	//		else if ( X_TI_stuta == 0x2000 ) {X_TI_stuta=0x0002;}
 
 			
 			
@@ -520,7 +547,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	if(htim->Instance==TIM5)
 	{
 		Wait_time_s++;
-		if (Wait_time_s==10)
+		if (Wait_time_s==5) //  时间不能小于5秒，否则时间没到会更改Z_TI_statu的值
 		{
 			
 			X_TI_stuta=0x0040;

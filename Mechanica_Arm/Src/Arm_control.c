@@ -18,19 +18,24 @@ void Arm_Init(void)
 	Motor_Init();
 	if (num==1)
 	{
-		xy_Set_speed(2500);
 		z_Set_speed(1250);
+		xy_Set_speed(2500);
+		
 		num++;
 	}else
 	{
+		z_Set_speed(1250);
 		xy_Set_speed(2500);
-		z_Set_speed(1500);
+		
 	}
 	X_R_MOV();
 	Y_L_MOV();
 	Z_UP_MOV();
 	
+	
 	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
+	delay_ms(3000);
+	
 	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 	HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
 	

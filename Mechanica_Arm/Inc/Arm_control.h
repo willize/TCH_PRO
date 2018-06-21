@@ -9,9 +9,6 @@
 #define  Glue_Mathine_Start() HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_SET)
 #define  Glue_Mathine_Stop()  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_RESET)
 
-#define NO_CYCLE 0  //非循环模式 
-#define CYCLE    1  //循环模式
-
 typedef struct
 {
 	int X_TInum;
