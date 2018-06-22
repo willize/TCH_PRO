@@ -24,8 +24,8 @@ void Arm_Init(void)
 		num++;
 	}else
 	{
-		z_Set_speed(1250);
-		xy_Set_speed(2500);
+		z_Set_speed(1000);
+		xy_Set_speed(2000);
 		
 	}
 	X_R_MOV();

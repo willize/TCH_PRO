@@ -79,6 +79,7 @@ u8 Z_downn_point_3=2;
 u8 Z_downn_fla_1=0;
 u8 Z_downn_fla_2=0;
 u8 Z_downn_fla_3=0;
+u16 start_key_fla=0;
 //u16 	 Decel_Period[1000]={0};
 /* USER CODE END 0 */
 
@@ -148,21 +149,24 @@ int main(void)
 
 			if ( (X_TI_stuta&0x0001) && (Y_TI_stuta&0x0001) && (Z_TI_stuta&0x0001)) //夹取右边的物品
 			{
-				if (main_sta&0x0001)
+				if (start_key_fla>0)
 				{
-					printf("main1!!\r\n");
-					
-					X_L_MOV();
-					Y_R_MOV();
-					Z_DOWN_MOV();
-					delay_ms(1000);	
-					Z_Control(27.0f); //z轴最长高度28
-						delay_ms(1000);
-					X_Control(134.0f);  //6bei
-							delay_ms(50);
-					Y_Control(103.5f);
-					
-					main_sta=0x0002;
+					if (main_sta&0x0001)
+					{
+						printf("main1!!\r\n");
+						
+						X_L_MOV();
+						Y_R_MOV();
+						Z_DOWN_MOV();
+						delay_ms(1000);	
+						Z_Control(27.0f); //z轴最长高度28
+							delay_ms(1000);
+						X_Control(134.0f);  //6bei
+								delay_ms(50);
+						Y_Control(103.5f);
+						
+						main_sta=0x0002;
+					}
 				}
 			}
 			
@@ -171,20 +175,16 @@ int main(void)
 			if (main_sta&0x0002)
 			{
 				printf("main2\r\n");
-				delay_ms(1000);
 				Air_CLOSE();
-				delay_ms(2000);
+				delay_ms(500);
 				X_L_MOV();
 				Y_L_MOV();
 				Z_UP_MOV();
 				
 				Z_Control(Glue_Machine_High);
-				delay_ms(2000);
+				delay_ms(2500);
 				X_TI_stuta=0x0004; //6bei
-				delay_ms(15);
 				Y_Control(Y_Tool_Mov_Distance);
-				
-				//Arm_Control(2.0f, 360.0f, 2.5f, 360.0f, 0.5f, 10.0f);
 				
 				main_sta=0x0004;
 				Z_downn_point_1=1;
@@ -195,7 +195,7 @@ int main(void)
 		if (( Z_downn_point_1==1) && ( Z_downn_fla_1==1))
 		{
 			
-			delay_ms(1000);
+			delay_ms(500);
 			Z_DOWN_MOV();
 			Z_Control(Down_Distance);
 			Z_downn_point_1=0;
@@ -207,13 +207,12 @@ int main(void)
 			if (main_sta&0x0004)
 			{	
 				printf("main3\r\n");
-				delay_ms(1000);
 				Air_OPEN();
-				delay_ms(1000);
+				delay_ms(500);
 				X_L_MOV();
 				Y_R_MOV();
 				Z_UP_MOV();
-				//Arm_Control(1.0f, 1620.0f, 1.0f, 1620.0f, 2.0f, 15.0f);
+				
 				Z_Control( Z_Improve );
 				delay_ms(50);
 				
@@ -229,14 +228,14 @@ int main(void)
 		if (main_sta&0x0008)
 			{	
 				printf("main4\r\n");
-				delay_ms(2000);
+				delay_ms(500);
 				X_R_MOV();
 				Y_R_MOV();
 				Z_DOWN_MOV();
 				
 				X_Control(X_Tool_Groove_Distance);
 				Y_Control(Y_LR_Tool_Mov_Distance);
-				delay_ms(1000);
+				delay_ms(1500);
 				Z_Control((Glue_Machine_High + Z_Improve - Down_Distance));
 				
 				main_sta=0x0010;
@@ -250,13 +249,13 @@ int main(void)
 				{	
 					printf("main5\r\n");
 					Air_CLOSE();
-					delay_ms(2000);
+					delay_ms(500);
 					X_R_MOV();
 					Y_L_MOV();
 					Z_UP_MOV();
 					
 					Z_Control(Glue_Machine_High);
-					delay_ms(1000);
+					delay_ms(2500);
 					X_TI_stuta=0x0020;//X_Control( 45.0f);
 					Y_Control( Y_Tool_Mov_Distance);
 					
@@ -270,7 +269,7 @@ int main(void)
 		if (( Z_downn_point_2==1) && ( Z_downn_fla_2==1))
 		{
 
-			delay_ms(1000);
+			delay_ms(500);
 			Z_DOWN_MOV();
 			Z_Control(Down_Distance);
 			Z_downn_point_2=0;
@@ -286,13 +285,13 @@ int main(void)
 				{	
 					printf("main6\r\n");
 					Air_OPEN();
-					delay_ms(1000);
+					delay_ms(500);
 					X_L_MOV();
 					Y_R_MOV();
 					Z_UP_MOV();
 					
 					Z_Control(Z_Improve);
-					delay_ms(1000);
+					delay_ms(1500);
 					X_Control( 35.0f);
 					Y_Control( 45.0f);
 					HAL_TIM_Base_Start_IT(&htim5);    //等待区计时开始
@@ -311,14 +310,13 @@ int main(void)
 						{	
 							HAL_TIM_Base_Stop_IT(&htim5);
 							printf("main7\r\n");
-							delay_ms(2000);
 							X_R_MOV();
 							Y_L_MOV();
 							Z_DOWN_MOV();
 							
 							X_Control( (35.0f-X_Tool_Groove_Distance));
 							Y_Control( (45.0f-Y_Tool_Groove_Distance));						
-						  delay_ms(3000);
+						  delay_ms(1000);
 							Z_Control( Z_Improve );
 							
 							main_sta=0x0080;
@@ -332,7 +330,7 @@ int main(void)
 						{	
 							printf("main8\r\n");
 							Air_CLOSE();
-							delay_ms(2000);
+							delay_ms(500);
 							X_R_MOV();
 							Y_L_MOV();
 							Z_UP_MOV();
@@ -340,7 +338,6 @@ int main(void)
 							X_TI_stuta=0x0100;//Z_Control(15.0f);
 							Y_TI_stuta=0x0100;//X_Control( 45.0f);
 							Z_Control( Z_Improve );
-				
 
 							main_sta=0x0100;
 							
@@ -355,12 +352,11 @@ int main(void)
 						{	
 							printf("main4\r\n");
 							
-							delay_ms(2000);
 							X_R_MOV();
 							Y_R_MOV();
 							Z_DOWN_MOV();
 								
-							X_TI_stuta=0x0200;//X_Control( 45.0f);
+							X_TI_stuta=0x0200;
 							Y_Control( Y_Tool_Mov_Distance);
 							delay_ms(2000);
 							Z_Control( (Glue_Machine_High + Z_Improve - Down_Distance) );
@@ -376,13 +372,13 @@ int main(void)
 						{	
 							printf("main4\r\n");
 							Air_OPEN();
-							delay_ms(2000);
+							delay_ms(500);
 							X_R_MOV();
 							Y_L_MOV();
 							Z_UP_MOV();
 							
 							Z_Control( Glue_Machine_High );
-							delay_ms(2000);
+							delay_ms(3000);
 							X_Control( X_Tool_Groove_Distance);
 							Y_Control( (Y_Tool_Mov_Distance + Y_Tool_Groove_Distance));
 							
@@ -410,9 +406,8 @@ int main(void)
 					if (main_sta&0x0400)
 						{	
 							printf("main4\r\n");
-							delay_ms(2000);
 							Air_CLOSE();
-							delay_ms(1000);
+							delay_ms(500);
 							X_R_MOV();
 							Y_L_MOV();
 							Z_UP_MOV();
@@ -433,14 +428,13 @@ int main(void)
 					if (main_sta&0x0800)
 						{	
 							printf("main4\r\n");
-							delay_ms(5000);
 							X_R_MOV();
 							Y_R_MOV();
 							Z_DOWN_MOV();
 							
 							X_TI_stuta=0x1000;//X_Control( 45.0f);
 							Y_Control( Y_Tool_Mov_Distance);
-							delay_ms(2000);
+							delay_ms(1500);
 							Z_Control((Glue_Machine_High + Z_Improve - Down_Distance));
 
 							main_sta=0x1000;
@@ -456,7 +450,7 @@ int main(void)
 						{	
 							
 							Air_OPEN();
-							delay_ms(2000);
+							delay_ms(1000);
 							X_R_MOV();
 							Y_L_MOV();
 							Z_UP_MOV();
@@ -467,10 +461,17 @@ int main(void)
 							Z_num5=0;
 							Y_num6=0;
 							X_num7=0;
-						
+							if (start_key_fla==1)
+							{
+								start_key_fla=0;
+							}
+							else
+							{
+								start_key_fla=1;
+							}
 							Arm_Init();
 							
-							main_sta=0x0000;
+							main_sta=0x0001;
 						}	
 				}
 			
@@ -523,7 +524,8 @@ int main(void)
 //				HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
 //							HAL_TIM_Base_Stop_IT(&htim7);
 //				HAL_TIM_PWM_Stop(&htim4, TIM_CHANNEL_1);
-			main_sta=0x0001;				
+					if(start_key_fla==0) main_sta=0x0001;		
+					start_key_fla++;
 			printf("Green_Key!!\r\n");
 			
 				while(HAL_GPIO_ReadPin(GPIOE,G_key_Pin) == GPIO_PIN_SET);
@@ -550,6 +552,7 @@ int main(void)
 				Z_num5=0;
 				Y_num6=0;
 				X_num7=0;
+				start_key_fla=0;
 				Air_OPEN();
 				Arm_Init();
 				printf("Black_Key!!\r\n");
