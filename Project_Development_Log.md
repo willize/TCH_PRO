@@ -1,4 +1,4 @@
-#机械手项目日志
+#项目日志
 
 ##2018—6-20
 
@@ -16,30 +16,9 @@
 
 ##2018-6-22 修改按键
 
-1. 加入了开始的按键保护，如果出现连按，下次机械臂直接进行。
-    
-        start_key_fla=0;
-        ***
-        //主程序开始时
-        if (start_key_fal>0)
-        {  
-            main_fla=
-        }
-        *******
-        //机械臂运行的最后一个复位任务中
-        if (start_key_fal==1)
-            start_key_fal=0;
-        else start_key_fal=1;
-        
-        main_fla=0x0001;
-        ***
-        //开始按键中
-        if(start_key_fal==0)main_fal=0x0001;
-        start_key_fal++;
-        ***
-        //在复位按键中
-        start_key_fal=0;   
+##2018-6-28
+添加了2代机械臂程序框架
+>初始版本不采用freeRTOS，程序搭建成功后上RTOS，计划还采用ROS系统。
 
-2. 优化代码，提高了运行速度
        
     
