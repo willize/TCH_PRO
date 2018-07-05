@@ -4,9 +4,10 @@
 
 #include "sys.h"
 
-
-
+void Limit_Init(void);
 
 
 
 #endif 
+
+

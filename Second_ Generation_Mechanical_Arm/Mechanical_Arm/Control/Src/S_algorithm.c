@@ -3,6 +3,8 @@
 #include <math.h>
 #include "usart.h"
 
+//CalaculateSModel_Accel(float fre[], unsigned short period[], float len, float fre_max, float fre_min, float flexible)
+
 void CalaculateSModel_Accel(float fre[], unsigned short period[], float len, float fre_max, float fre_min, float flexible)
 {
 	int i=0;
@@ -15,8 +17,8 @@ void CalaculateSModel_Accel(float fre[], unsigned short period[], float len, flo
 		deno = 1.0 / (1+exp(-melo));
 		fre [i] = delt * deno + fre_min;
 		period[i] = (unsigned short)(1000000 / fre[i]);
-		printf("加速次数:%d\r\n",i);
-		printf("此时速度:%d\r\n\n",period[i]);
+	//	printf("加速次数:%d\r\n",i);
+	//	printf("此时速度:%d\r\n\n",period[i]);
 	}
 	return ;	
 }
@@ -34,10 +36,8 @@ void CalaculateSModel_Decel(float fre[], u16 period [], float len, float fre_max
 		fre [i]= fre_max - delt / deno;
 		period[i]	= (unsigned short) (1000000 / fre[i]);
 		
-		printf("减速次数:%d\r\n",i);
-		printf("此时速度:%d\r\n",period[i]);
-		
-		
+	//	printf("减速次数:%d\r\n",i);
+	//	printf("此时速度:%d\r\n",period[i]);
 	}
 	
 }

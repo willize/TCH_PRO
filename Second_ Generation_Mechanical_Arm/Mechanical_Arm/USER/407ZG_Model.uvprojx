@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Lib\STM32F4xx_HAL_Driver\Inc;..\Core;..\Lib\STM32F4xx_HAL_Driver\Inc\Legacy;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\BSP\KEY;..\BSP\LED;..\BSP\TIMER;..\HARDWARE\W25QXX;..\BSP\SPI;..\Control\Inc</IncludePath>
+              <IncludePath>..\Lib\STM32F4xx_HAL_Driver\Inc;..\Core;..\Lib\STM32F4xx_HAL_Driver\Inc\Legacy;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\BSP\KEY;..\BSP\LED;..\BSP\TIMER;..\HARDWARE\W25QXX;..\BSP\SPI;..\Control\Inc;..\HARDWARE\Inc;..\BSP\USART</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -539,6 +539,11 @@
               <FileType>1</FileType>
               <FilePath>..\BSP\SPI\spi.c</FilePath>
             </File>
+            <File>
+              <FileName>usart2_3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\USART\usart2_3.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -549,6 +554,26 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\W25QXX\w25qxx.c</FilePath>
             </File>
+            <File>
+              <FileName>Encoder.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\Src\Encoder.c</FilePath>
+            </File>
+            <File>
+              <FileName>Limit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\Src\Limit.c</FilePath>
+            </File>
+            <File>
+              <FileName>pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\Src\pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>Motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\Src\Motor.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -558,6 +583,11 @@
               <FileName>S_algorithm.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Control\Src\S_algorithm.c</FilePath>
+            </File>
+            <File>
+              <FileName>SCARA_Alg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Control\Src\SCARA_Alg.c</FilePath>
             </File>
           </Files>
         </Group>
