@@ -28,7 +28,7 @@ void Motor_Max_Speed()
 }
 
 /**********************************************************************/
-void X_Contorl(float Distance, float Dir)
+void X_Run_Contorl(float Distance, s8 Dir)
 {
 	if (Dir >0)X_L_MOV();
 	else if(Dir <0)X_R_MOV();
@@ -36,7 +36,7 @@ void X_Contorl(float Distance, float Dir)
 	X_Move_Angle(Distance);
 	X_Start();	
 }
-void Y_Contorl(float Distance, float Dir)
+void Y_Run_Contorl(float Distance, s8 Dir)
 {
 	if (Dir >0)Y_L_MOV();
 	else if(Dir <0)Y_R_MOV();
@@ -44,13 +44,20 @@ void Y_Contorl(float Distance, float Dir)
 	Y_Move_Angle(Distance);
 	Y_Start();	
 }
-void Z_Contorl(float Distance, float Dir)
+void Z_Run_Contorl(float Distance, s8 Dir)
 {
 	if (Dir >0)Z_UP_MOV();
 	else if(Dir <0)Z_DOWN_MOV();
 	
 	Z_Move_High(Distance);
 	Z_Start();	
+}
+
+void SCARA_Control(float Dist[], s8 Dirt[])
+{
+	X_Run_Contorl(Dist[0], Dirt[0]);
+	X_Run_Contorl(Dist[1], Dirt[1]);
+	X_Run_Contorl(Dist[2], Dirt[2]);
 }
 
 void Coordinate_System(double XY_Angle,double YZ_Angle,double Z_Coor_High)

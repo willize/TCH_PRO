@@ -1106,8 +1106,8 @@ I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x5B34B780)
 I (..\BSP\TIMER\timer.h)(0x5B34B77F)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x57F606B6)
 I (..\SYSTEM\usart\usart.h)(0x5B34B793)
-F (..\Control\Src\SCARA_Alg.c)(0x5B3DD36B)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\Lib\STM32F4xx_HAL_Driver\Inc -I ..\Core -I ..\Lib\STM32F4xx_HAL_Driver\Inc\Legacy -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\BSP\KEY -I ..\BSP\LED -I ..\BSP\TIMER -I ..\HARDWARE\W25QXX -I ..\BSP\SPI -I ..\Control\Inc -I ..\HARDWARE\Inc -I ..\BSP\USART-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o ..\obj\scara_alg.o --omf_browse ..\obj\scara_alg.crf --depend ..\obj\scara_alg.d)
-I (..\Control\Inc\SCARA_Alg.h)(0x5B3D9143)
+F (..\Control\Src\SCARA_Alg.c)(0x5B3ED6FE)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\Lib\STM32F4xx_HAL_Driver\Inc -I ..\Core -I ..\Lib\STM32F4xx_HAL_Driver\Inc\Legacy -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\BSP\KEY -I ..\BSP\LED -I ..\BSP\TIMER -I ..\HARDWARE\W25QXX -I ..\BSP\SPI -I ..\Control\Inc -I ..\HARDWARE\Inc -I ..\BSP\USART-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o ..\obj\scara_alg.o --omf_browse ..\obj\scara_alg.crf --depend ..\obj\scara_alg.d)
+I (..\Control\Inc\SCARA_Alg.h)(0x5B3ED6FE)
 I (..\SYSTEM\sys\sys.h)(0x5B34B793)
 I (..\USER\stm32f4xx.h)(0x5B34B795)
 I (..\USER\stm32f407xx.h)(0x5B34B795)
@@ -1142,3 +1142,38 @@ I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x5B34B780)
 I (..\HARDWARE\Inc\Motor.h)(0x5B3DD370)
 I (..\USER\main.h)(0x5B3DD370)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x57F606B6)
+F (..\Control\Src\SCARA_Control.c)(0x5B3ED6FE)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\Lib\STM32F4xx_HAL_Driver\Inc -I ..\Core -I ..\Lib\STM32F4xx_HAL_Driver\Inc\Legacy -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\BSP\KEY -I ..\BSP\LED -I ..\BSP\TIMER -I ..\HARDWARE\W25QXX -I ..\BSP\SPI -I ..\Control\Inc -I ..\HARDWARE\Inc -I ..\BSP\USART-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o ..\obj\scara_control.o --omf_browse ..\obj\scara_control.crf --depend ..\obj\scara_control.d)
+I (..\Control\Inc\SCARA_Control.h)(0x5B3DF875)
+I (..\SYSTEM\sys\sys.h)(0x5B34B793)
+I (..\USER\stm32f4xx.h)(0x5B34B795)
+I (..\USER\stm32f407xx.h)(0x5B34B795)
+I (..\Core\core_cm4.h)(0x5B34B77F)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
+I (..\Core\core_cmInstr.h)(0x5B34B780)
+I (..\Core\cmsis_armcc.h)(0x5B34B77F)
+I (..\Core\core_cmFunc.h)(0x5B34B77F)
+I (..\Core\core_cmSimd.h)(0x5B34B780)
+I (..\USER\system_stm32f4xx.h)(0x5B34B797)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x5B34B780)
+I (..\USER\stm32f4xx_hal_conf.h)(0x5B34B795)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x5B34B780)
+I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x57F606B8)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h)(0x5B34B780)
+I (..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x5B34B780)
+I (..\SYSTEM\delay\delay.h)(0x5B34B793)
+I (..\Control\Inc\SCARA_Alg.h)(0x5B3ED6FE)
