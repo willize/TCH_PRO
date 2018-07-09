@@ -27,8 +27,15 @@
 "..\obj\led.o"
 "..\obj\timer.o"
 "..\obj\spi.o"
+"..\obj\usart2_3.o"
 "..\obj\w25qxx.o"
+"..\obj\encoder.o"
+"..\obj\limit.o"
+"..\obj\pwm.o"
+"..\obj\motor.o"
 "..\obj\s_algorithm.o"
+"..\obj\scara_alg.o"
+"..\obj\scara_control.o"
 --strict --scatter "..\OBJ\407ZG_Model.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
