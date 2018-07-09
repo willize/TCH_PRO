@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp
+--cpu Cortex-M4.fp
 "407_model\startup_stm32f407xx.o"
 "407_model\stm32f4xx_hal_gpio.o"
 "407_model\stm32f4xx_hal_dma.o"

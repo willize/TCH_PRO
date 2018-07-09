@@ -10,8 +10,7 @@ void Motor_Init()  // 初始化电机
 /************step motor tim init*************/	
   MX_TIM5_Init(8399, 10000);
   MX_TIM6_Init(83, 1000);
-  MX_TIM7_Init(83, 1000);
-	
+  MX_TIM7_Init(83, 1000);	
 }
 
 
@@ -75,14 +74,11 @@ void x_Distance(u16 length)
 }
 void y_Distance(u16 length)
 {
-	
 	__HAL_TIM_SET_AUTORELOAD(&htim6, length);
-	
 }
 void z_Distance(u16 length)
 {
 	__HAL_TIM_SET_AUTORELOAD(&htim5, length);
-
 }
 
 /***********************************************/
