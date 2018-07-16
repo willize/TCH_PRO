@@ -594,6 +594,11 @@
               <FileType>1</FileType>
               <FilePath>..\Control\Src\SCARA_Control.c</FilePath>
             </File>
+            <File>
+              <FileName>IT.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Control\Src\IT.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

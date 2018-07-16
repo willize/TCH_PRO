@@ -3,6 +3,7 @@
 
 #include "sys.h"
 
+void Mechaical_Arm_Init(void);
 
 
 

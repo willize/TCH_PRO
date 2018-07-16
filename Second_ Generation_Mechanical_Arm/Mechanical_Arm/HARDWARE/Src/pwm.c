@@ -1,5 +1,7 @@
 #include "pwm.h"
 #include "main.h" 
+#include "IT.h"
+#include "pwm.h"
 
 TIM_HandleTypeDef htim10;
 TIM_HandleTypeDef htim11;
@@ -29,7 +31,7 @@ void X_PWM_Init(u16 pre, u16 arr)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
-
+	
   if (HAL_TIM_PWM_Init(&htim10) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
@@ -51,6 +53,7 @@ void X_PWM_Init(u16 pre, u16 arr)
     _Error_Handler(__FILE__, __LINE__);
   }
 
+	 HAL_TIM_MspPostInit(&htim10);
 }
 
 void Y_PWM_Init(u16 pre, u16 arr)
@@ -95,6 +98,7 @@ void Y_PWM_Init(u16 pre, u16 arr)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
+	HAL_TIM_MspPostInit(&htim11);
 }
 
 void Z_PWM_Init(u16 pre, u16 arr)
@@ -139,6 +143,7 @@ void Z_PWM_Init(u16 pre, u16 arr)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
+	HAL_TIM_MspPostInit(&htim13);
 }
 
 
@@ -187,63 +192,26 @@ void TIM4_PWM_Init(u16 pre, u16 arr)
 	HAL_TIM_PWM_ConfigChannel(&htim4, &sConfigOC, TIM_CHANNEL_2);
 	HAL_TIM_PWM_ConfigChannel(&htim4, &sConfigOC, TIM_CHANNEL_3);
 	HAL_TIM_PWM_ConfigChannel(&htim4, &sConfigOC, TIM_CHANNEL_4);
-
+	HAL_TIM_MspPostInit(&htim4);
 }
 
 
 
-void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef *htim)
-{
-	GPIO_InitTypeDef GPIO_InitStruct;
-	__HAL_RCC_GPIOF_CLK_ENABLE();
-	__HAL_RCC_GPIOD_CLK_ENABLE();
-	if (htim->Instance == TIM10)
-	{
-		GPIO_InitStruct.Pin = X_PWM_PIN;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull=GPIO_PULLUP;
-		 GPIO_InitStruct.Alternate=GPIO_AF3_TIM10;
-    HAL_GPIO_Init(X_PWM_GPIO, &GPIO_InitStruct);
-		HAL_NVIC_SetPriority(TIM1_UP_TIM10_IRQn,1,0);    //设置中断优先级，抢占优先级1，子优先级3
-		HAL_NVIC_EnableIRQ(TIM1_UP_TIM10_IRQn);          //开启ITM3中断		
-		
-	}
-	if (htim->Instance == TIM11)
-	{
-		GPIO_InitStruct.Pin = Y_PWM_PIN;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull=GPIO_PULLUP;
-		 GPIO_InitStruct.Alternate=GPIO_AF3_TIM11;
-    HAL_GPIO_Init(Y_PWM_GPIO, &GPIO_InitStruct);
-		
-		HAL_NVIC_SetPriority(TIM1_TRG_COM_TIM11_IRQn,1,1);    //设置中断优先级，抢占优先级1，子优先级3
-		HAL_NVIC_EnableIRQ(TIM1_TRG_COM_TIM11_IRQn);          //开启ITM3中断  
-		
-	}
-	if (htim->Instance == TIM13)
-	{
-		GPIO_InitStruct.Pin = Z_PWM_PIN;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull=GPIO_PULLUP;
-		 GPIO_InitStruct.Alternate=GPIO_AF9_TIM13;
-    HAL_GPIO_Init(Z_PWM_GPIO, &GPIO_InitStruct);
-		
-		HAL_NVIC_SetPriority(TIM8_UP_TIM13_IRQn ,1,2);    //设置中断优先级，抢占优先级1，子优先级3
-		HAL_NVIC_EnableIRQ(TIM8_UP_TIM13_IRQn );          //开启ITM3中断
-	}
-	if (htim->Instance == TIM4)
-	{
-		GPIO_InitStruct.Pin = PWM_1_PIN | PWM_2_PIN | PWM_3_PIN | PWM_4_PIN;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull=GPIO_PULLUP;
-		GPIO_InitStruct.Alternate=GPIO_AF9_TIM13;
-    HAL_GPIO_Init(PWM_1_GPIO, &GPIO_InitStruct);
-		
-		HAL_NVIC_SetPriority(TIM4_IRQn ,1,3);    //设置中断优先级，抢占优先级1，子优先级3
-		HAL_NVIC_EnableIRQ(TIM4_IRQn);           //开启ITM3中断		
-	}
+//void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef *htim)
+
 	
+//定时器3中断服务函数
+void TIM1_UP_TIM10_IRQHandler(void)
+{
+    HAL_TIM_IRQHandler(&htim10);
+}
+void TIM1_TRG_COM_TIM11_IRQHandler(void)
+{
+    HAL_TIM_IRQHandler(&htim11);
 }
 
-
+void TIM8_UP_TIM13_IRQHandler(void)
+{
+    HAL_TIM_IRQHandler(&htim13);
+}
 

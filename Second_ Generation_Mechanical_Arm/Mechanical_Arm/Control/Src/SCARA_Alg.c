@@ -46,18 +46,21 @@ void Y_Run_Contorl(float Distance, s8 Dir)
 }
 void Z_Run_Contorl(float Distance, s8 Dir)
 {
+	printf("距离为%f,方向为%d\r\n",Distance,Dir);
 	if (Dir >0)Z_UP_MOV();
 	else if(Dir <0)Z_DOWN_MOV();
 	
 	Z_Move_High(Distance);
+	Z_Set_Speed(10.0f);
 	Z_Start();	
 }
 
-void SCARA_Control(float Dist[], s8 Dirt[])
-{
-	X_Run_Contorl(Dist[0], Dirt[0]);
-	X_Run_Contorl(Dist[1], Dirt[1]);
-	X_Run_Contorl(Dist[2], Dirt[2]);
+void SCARA_Control(float *Dist, s8 *Dirt)
+{ 
+	printf("SCARA_Control!\r\n");
+	X_Run_Contorl(*Dist, *Dirt);
+	Y_Run_Contorl(*(Dist+1), *(Dirt+1));
+	Z_Run_Contorl(*(Dist+2), *(Dirt+2));
 }
 
 void Coordinate_System(double XY_Angle,double YZ_Angle,double Z_Coor_High)

@@ -9,7 +9,8 @@ void MechanicalArm_Anti_Solution(double X_Coor, double Y_Coor,double Z_Coor);
 void X_Contorl(float Distance, s8 Dir);
 void Y_Contorl(float Distance, s8 Dir);
 void Z_Contorl(float Distance, s8 Dir);
-void SCARA_Control(float Dist[3], s8 Dirt[3]);
+void SCARA_Control(float *Dist, s8 *Dirt);
+void Motor_Max_Speed(void);
 
 #endif
 

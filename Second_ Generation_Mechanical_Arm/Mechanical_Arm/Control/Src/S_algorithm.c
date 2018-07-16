@@ -17,8 +17,8 @@ void CalaculateSModel_Accel(float fre[], unsigned short period[], float len, flo
 		deno = 1.0 / (1+exp(-melo));
 		fre [i] = delt * deno + fre_min;
 		period[i] = (unsigned short)(1000000 / fre[i]);
-	//	printf("加速次数:%d\r\n",i);
-	//	printf("此时速度:%d\r\n\n",period[i]);
+//		printf("加速次数:%d\r\n",i);
+//		printf("此时速度:%d\r\n\n",period[i]);
 	}
 	return ;	
 }

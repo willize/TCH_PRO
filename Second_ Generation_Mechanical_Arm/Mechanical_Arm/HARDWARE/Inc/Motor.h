@@ -4,7 +4,7 @@
 #include "sys.h"
 #include "main.h"
 
-#define  Z_SUBDIVISION 1000
+#define  Z_SUBDIVISION 800
 #define XY_SUBDIVISION 2000  //x y轴细分数  每转2000个脉冲  要是100个脉冲的加减速过程； 由于有30的减速比 机械臂的xy轴最少需要1.2度加减速
 #define One_Pulse_Agle   (XY_SUBDIVISION / 360)
 #define  REDUCTION_RATIO  30
@@ -20,9 +20,9 @@
 
 void Motor_Dir_GPIO_Init(void);
 
-void X_Set_AutoReload(float AutoReload);
-void Y_Set_AutoReload(float AutoReload);
-void Z_Set_AutoReload(float AutoReload);
+void X_Set_AutoReload(u16 AutoReload);
+void Y_Set_AutoReload(u16 AutoReload);
+void Z_Set_AutoReload(u16 AutoReload);
 
 void X_Set_Speed(float speed);
 void Y_Set_Speed(float speed);

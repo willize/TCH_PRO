@@ -54,6 +54,8 @@ u8 USART_RX_BUF[USART_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
 //bit13~0，	接收到的有效字节数目
 u16 USART_RX_STA=0;       //接收状态标记	
 
+u8 Handle_Flag=0;
+
 u8 aRxBuffer[RXBUFFERSIZE];//HAL库使用的串口接收缓冲
 UART_HandleTypeDef UART1_Handler; //UART句柄
 
@@ -111,25 +113,48 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if(huart->Instance==USART1)//如果是串口1
 	{
-		if((USART_RX_STA&0x8000)==0)//接收未完成
+		if (aRxBuffer[0]==0xa5) Handle_Flag = 1;
+		
+		if ( Handle_Flag == 1)
 		{
-			if(USART_RX_STA&0x4000)//接收到了0x0d
+		
+			if((USART_RX_STA&0x8000)==0)//接收未完成
 			{
-				if(aRxBuffer[0]!=0x0a)USART_RX_STA=0;//接收错误,重新开始
-				else USART_RX_STA|=0x8000;	//接收完成了 
-			}
-			else //还没收到0X0D
-			{	
-				if(aRxBuffer[0]==0x0d)USART_RX_STA|=0x4000;
-				else
+				
+				if(USART_RX_STA&0x4000)//接收到了0x0d
 				{
-					USART_RX_BUF[USART_RX_STA&0X3FFF]=aRxBuffer[0] ;
-					USART_RX_STA++;
-					if(USART_RX_STA>(USART_REC_LEN-1))USART_RX_STA=0;//接收数据错误,重新开始接收	  
-				}		 
+					
+					if(aRxBuffer[0]!=0x0a)
+					{
+						
+						USART_RX_STA=0;//接收错误,重新开始  
+						Handle_Flag = 0;
+					}
+					else
+					{
+					
+						USART_RX_STA|=0x8000;	//接收完成 
+						Handle_Flag=0;
+					}
+				}
+				else //还没收到0X0D
+				{	
+					
+					if(aRxBuffer[0]==0x0d)USART_RX_STA|=0x4000;
+					else
+					{
+						
+						USART_RX_BUF[USART_RX_STA&0X3FFF]=aRxBuffer[0] ;
+						USART_RX_STA++;
+						if(USART_RX_STA>(USART_REC_LEN-1))
+						{
+							USART_RX_STA=0;//接收数据错误,重新开始接收
+							Handle_Flag=0;
+						}	  
+					}		 
+				}
 			}
-		}
-
+	   }
 	}
 }
  

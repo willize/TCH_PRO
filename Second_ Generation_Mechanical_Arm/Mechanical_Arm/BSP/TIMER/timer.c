@@ -1,5 +1,6 @@
 #include "timer.h"
 #include "led.h"
+#include "IT.h"
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
 //ALIENTEK STM32F429开发板
@@ -76,11 +77,29 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
 		HAL_NVIC_SetPriority(TIM7_IRQn,0,2);    //设置中断优先级，抢占优先级1，子优先级3
 		HAL_NVIC_EnableIRQ(TIM7_IRQn);          //开启ITM3中断 		
 	}
+	if(htim->Instance==TIM10)
+	{
+		__HAL_RCC_TIM10_CLK_ENABLE();            //使能TIM3时钟
+		HAL_NVIC_SetPriority(TIM1_UP_TIM10_IRQn,0,1);    //设置中断优先级，抢占优先级1，子优先级3
+		HAL_NVIC_EnableIRQ(TIM1_UP_TIM10_IRQn);          //开启ITM3中断   
+	}
+	if (htim->Instance==TIM11) 
+	{
+		__HAL_RCC_TIM11_CLK_ENABLE();            //使能TIM3时钟
+		HAL_NVIC_SetPriority(TIM1_TRG_COM_TIM11_IRQn,0,2);    //设置中断优先级，抢占优先级1，子优先级3
+		HAL_NVIC_EnableIRQ(TIM1_TRG_COM_TIM11_IRQn);          //开启ITM3中断 		
+	}
+	if (htim->Instance==TIM13) 
+	{
+		__HAL_RCC_TIM13_CLK_ENABLE();            //使能TIM3时钟
+		HAL_NVIC_SetPriority(TIM8_UP_TIM13_IRQn,0,3);    //设置中断优先级，抢占优先级1，子优先级3
+		HAL_NVIC_EnableIRQ(TIM8_UP_TIM13_IRQn);          //开启ITM3中断 		
+	}
+	
 }
 
-
 //定时器3中断服务函数
-void TIM6_IRQHandler(void)
+void TIM6_DAC_IRQHandler(void)
 {
     HAL_TIM_IRQHandler(&TIM6_Handler);
 }
@@ -93,14 +112,14 @@ void TIM7_IRQHandler(void)
 
 
 //回调函数，定时器中断服务函数调用
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-    if(htim==(&TIM6_Handler))
-    {
-        
-    }
-		if(htim==(&TIM7_Handler))
-    {
-        
-    }
-}
+//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+//{
+//    if(htim==(&TIM6_Handler))
+//    {
+//        
+//    }
+//		if(htim==(&TIM7_Handler))
+//    {
+//        
+//    }
+//}
