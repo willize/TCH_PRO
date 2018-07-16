@@ -45,6 +45,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
+#include "main.h"
+#include "IT.h"
 
 /** @addtogroup STM32F4xx_HAL_Driver
   * @{
@@ -93,6 +95,62 @@ void HAL_MspDeInit(void)
 /**
   * @}
   */
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
+{
+	
+	GPIO_InitTypeDef GPIO_InitStruct;
+	__HAL_RCC_GPIOF_CLK_ENABLE();
+	__HAL_RCC_GPIOD_CLK_ENABLE();
+	if (htim->Instance == TIM10)
+	{
+		__HAL_RCC_TIM10_CLK_ENABLE(); 
+		printf("定时器10引脚初始化！");
+		GPIO_InitStruct.Pin = X_PWM_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull=GPIO_PULLUP;
+		GPIO_InitStruct.Alternate=GPIO_AF3_TIM10;
+    HAL_GPIO_Init(X_PWM_GPIO, &GPIO_InitStruct);	
+		
+	}
+	if (htim->Instance == TIM11)
+	{
+		__HAL_RCC_TIM11_CLK_ENABLE(); 
+		printf("定时器11引脚初始化！");
+		GPIO_InitStruct.Pin = Y_PWM_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull=GPIO_PULLUP;
+		 GPIO_InitStruct.Alternate=GPIO_AF3_TIM11;
+    HAL_GPIO_Init(Y_PWM_GPIO, &GPIO_InitStruct);
+		
+		
+		
+	}
+	if (htim->Instance == TIM13)
+	{
+		__HAL_RCC_TIM13_CLK_ENABLE(); 
+		printf("定时器13引脚初始化！");
+		GPIO_InitStruct.Pin = Z_PWM_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull=GPIO_PULLUP;
+		 GPIO_InitStruct.Alternate=GPIO_AF9_TIM13;
+    HAL_GPIO_Init(Z_PWM_GPIO, &GPIO_InitStruct);
+		
+	
+	}
+	if (htim->Instance == TIM4)
+	{
+			printf("定时器4引脚初始化！");
+		__HAL_RCC_TIM4_CLK_ENABLE();
+		GPIO_InitStruct.Pin = PWM_1_PIN | PWM_2_PIN | PWM_3_PIN | PWM_4_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull=GPIO_PULLUP;
+		GPIO_InitStruct.Alternate=GPIO_AF2_TIM4;
+    HAL_GPIO_Init(PWM_1_GPIO, &GPIO_InitStruct);
+		
+	}
+	
+}
+
 
 /**
   * @}

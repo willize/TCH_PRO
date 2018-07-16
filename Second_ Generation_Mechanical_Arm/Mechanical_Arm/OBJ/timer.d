@@ -33,3 +33,4 @@
 ..\obj\timer.o: ..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h
 ..\obj\timer.o: ..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h
 ..\obj\timer.o: ..\BSP\LED\led.h
+..\obj\timer.o: ..\Control\Inc\IT.h

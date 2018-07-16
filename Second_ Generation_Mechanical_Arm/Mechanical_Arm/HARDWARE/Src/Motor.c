@@ -6,7 +6,7 @@ extern TIM_HandleTypeDef htim10;
 extern TIM_HandleTypeDef htim11;
 extern TIM_HandleTypeDef htim13;
 
-volatile u16 X_IT_Num, Y_IT_Num, Z_IT_Num; //各轴电机移动的步数 在中断中的个数
+ u16 X_IT_Num, Y_IT_Num, Z_IT_Num; //各轴电机移动的步数 在中断中的个数
 
 void Motor_Dir_GPIO_Init()
 {
@@ -20,19 +20,19 @@ void Motor_Dir_GPIO_Init()
 	HAL_GPIO_Init(X_DIR_GPIO,&GPIO_Initure);
 }
 /*---------------------------设置预装载值------------------------------*/
-void X_Set_AutoReload(float AutoReload)
+void X_Set_AutoReload(u16 AutoReload)
 {
 	__HAL_TIM_SET_AUTORELOAD(&htim10, AutoReload);
 	__HAL_TIM_SET_COMPARE(&htim10,TIM_CHANNEL_1, AutoReload/2);
 }
 
-void Y_Set_AutoReload(float AutoReload)
+void Y_Set_AutoReload(u16 AutoReload)
 {
 	__HAL_TIM_SET_AUTORELOAD(&htim11, AutoReload);
 	__HAL_TIM_SET_COMPARE(&htim11,TIM_CHANNEL_1, AutoReload/2);
 }
 
-void Z_Set_AutoReload(float AutoReload)
+void Z_Set_AutoReload(u16 AutoReload)
 {
 	__HAL_TIM_SET_AUTORELOAD(&htim13, AutoReload);
 	__HAL_TIM_SET_COMPARE(&htim13,TIM_CHANNEL_1, AutoReload/2);
@@ -150,8 +150,9 @@ void Y_Move_Angle(float Yangle)
 void Z_Move_High(float Zhigh)
 {
 	float Z_PWM_Num;
-	Z_PWM_Num = Zhigh * REDUCTION_RATIO * Z_SUBDIVISION;
+	Z_PWM_Num = Zhigh * Z_SUBDIVISION;
   Z_IT_Num = (u16) Z_PWM_Num;
+	printf("中断次数为：%d\r\n",Z_IT_Num);
 }
 /********************************************************************/
 
