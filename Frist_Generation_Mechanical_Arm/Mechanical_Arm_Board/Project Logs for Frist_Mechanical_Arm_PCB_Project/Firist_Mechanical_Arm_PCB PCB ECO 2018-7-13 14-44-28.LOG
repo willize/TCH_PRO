@@ -1,0 +1,8 @@
+Added Component: Designator=P?(USB Standard Socket)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "10 Price  RMB"; Value = "0.3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "1000 Price  RMB"; Value = "0.2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturers"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+5V Pin=P?-1
+Added Pin To Net: NetName=GND Pin=P?-4
+Added Member To Class: ClassName=Frist_Mechanical_Arm_SCH Member=Component P? USB Standard Socket

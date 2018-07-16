@@ -1,0 +1,9 @@
+Change Component Footprint: Designator=P3 Old Footprint=HDR1X2 New Footprint=KF128-5.08-2P
+Change Component Footprint: Designator=P6 Old Footprint=HDR1X2 New Footprint=KF128-5.08-2P
+Change Component Footprint: Designator=P7 Old Footprint=HDR1X3 New Footprint=KF128-5.08-3P
+Change Component Footprint: Designator=P8 Old Footprint=HDR1X3 New Footprint=KF128-5.08-3P
+Change Component Footprint: Designator=P9 Old Footprint=HDR1X3 New Footprint=KF128-5.08-3P
+Change Component Footprint: Designator=P10 Old Footprint=HDR1X4 New Footprint=KF128-5.08-4P
+Change Component Footprint: Designator=P11 Old Footprint=HDR1X6 New Footprint=KF128-5.08-6P
+Added Member To Class: ClassName=Frist_Mechanical_Arm_SCH Member=Component P1 USB Standard Socket
+Added Room: Name=Frist_Mechanical_Arm_SCH

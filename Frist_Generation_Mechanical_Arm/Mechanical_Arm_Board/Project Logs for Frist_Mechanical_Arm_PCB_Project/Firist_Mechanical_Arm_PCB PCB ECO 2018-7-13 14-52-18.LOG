@@ -1,0 +1,25 @@
+Removed Member From Class: ClassName=Frist_Mechanical_Arm_SCH Member=P?
+Change Component Comment : Designator=P3 Old Comment=Header 2 New Comment=AIR_SW
+Change Component Comment : Designator=P2 Old Comment=Header 2 New Comment=FAN
+Change Component Comment : Designator=P1 Old Comment=Header 2 New Comment=SW
+Change Component Comment : Designator=P4 Old Comment=Header 3 New Comment=X
+Change Component Comment : Designator=P7 Old Comment=Header 3 New Comment=Y
+Change Component Comment : Designator=P8 Old Comment=Header 3 New Comment=Z
+Change Component Comment : Designator=P9 Old Comment=Header 4 New Comment=KEY
+Change Component Comment : Designator=P10 Old Comment=Header 6 New Comment=Limit
+Change Component Designator: OldDesignator=P1 NewDesignator=P2
+Change Component Designator: OldDesignator=P2 NewDesignator=P6
+Change Component Designator: OldDesignator=P4 NewDesignator=P7
+Change Component Designator: OldDesignator=P5 NewDesignator=P4
+Change Component Designator: OldDesignator=P6 NewDesignator=P5
+Change Component Designator: OldDesignator=P7 NewDesignator=P8
+Change Component Designator: OldDesignator=P8 NewDesignator=P9
+Change Component Designator: OldDesignator=P9 NewDesignator=P10
+Change Component Designator: OldDesignator=P10 NewDesignator=P11
+Change Component Designator: OldDesignator=P? NewDesignator=P1
+Change Component Designator: OldDesignator=R2 NewDesignator=R4
+Change Component Designator: OldDesignator=R3 NewDesignator=R5
+Change Component Designator: OldDesignator=R4 NewDesignator=R2
+Change Component Designator: OldDesignator=R5 NewDesignator=R3
+Change Net Name : Old Net Name=NetR2_2 New Net Name=NetR4_2
+Added Member To Class: ClassName=Frist_Mechanical_Arm_SCH Member=Component P11 Limit
