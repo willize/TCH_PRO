@@ -33,6 +33,7 @@
 "..\obj\limit.o"
 "..\obj\pwm.o"
 "..\obj\motor.o"
+"..\obj\hmi.o"
 "..\obj\s_algorithm.o"
 "..\obj\scara_alg.o"
 "..\obj\scara_control.o"

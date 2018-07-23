@@ -7,6 +7,7 @@
 #include "w25qxx.h"
 #include "spi.h"
 #include "main.h"
+#include "hmi.h"
 
 #include "SCARA_Alg.h"
 #include "SCARA_Control.h"
@@ -14,7 +15,7 @@
 #include "pwm.h"
 
 /* Private function prototypes -----------------------------------------------*/
-float Dis[3]={0,0,20};
+float Dis[3]={0,0,1000};
 s8 Dir[3]={0,0,1};
 	
 const u8 Text_Buffer[]={"Mechainel_ARM Flash and SPI Text"};
@@ -22,6 +23,7 @@ const u8 Text_Buffer[]={"Mechainel_ARM Flash and SPI Text"};
 /* Private functions ---------------------------------------------------------*/
 extern TIM_HandleTypeDef htim13;
 extern TIM_HandleTypeDef htim4;
+extern u8 USART_RX_BUF[USART_REC_LEN];
 /**
   * @brief  Main program
   * @param  None
@@ -64,19 +66,20 @@ int main(void)
 		if (key == KEY0_PRES)
 		{
 			printf ("写入W25Q16数据！\r\n");
-			W25QXX_Write((u8*)Text_Buffer,FLASH_SIZE-100,BUF_SIZE);	
+			W25QXX_Write((u8*)Text_Buffer,FLASH_SIZE-100,BUF_SIZE);
 			printf ("写入完毕！！\r\n");
 		}
 		if (key == KEY1_PRES)
 		{
-			printf ("读取W25Q16数据！\r\n");
-			W25QXX_Read(datatemp,FLASH_SIZE-100,BUF_SIZE);
-			SCARA_Control( Dis,Dir);
+			//printf ("读取W25Q16数据！\r\n");
+			//W25QXX_Read(datatemp,FLASH_SIZE-100,BUF_SIZE);
+			//SCARA_Control( Dis,Dir);
+			tran_3_0xff();
 			//Z_Set_Speed(1.0f);
 			//Z_Set_AutoReload(2000.0f);
 			//HAL_TIM_PWM_Start(&htim13,TIM_CHANNEL_1);
 			
-//			for (j=0;j <= (BUF_SIZE-1); j++ ) 
+//			for (j=0;j <= (BUF_SIZE-1); j++ )
 //			{
 //				delay_ms(20);
 //				printf ("%c",datatemp[j]);
@@ -97,12 +100,14 @@ int main(void)
 			//printf("\r\n您发送的消息为:\r\n");
 			HAL_UART_Transmit(&UART1_Handler,(uint8_t*)USART_RX_BUF,len,1000);	//发送接收到的数据
 			while(__HAL_UART_GET_FLAG(&UART1_Handler,UART_FLAG_TC)!=SET);		//等待发送结束
-			printf("\r\n\r\n");//插入换行
-			USART_RX_STA=0;
+			//printf("\r\n\r\n");//插入换行
+
+			Hmi_Commun();		
+				
+							
 		}
   }
 }
-
 
 
 #ifdef  USE_FULL_ASSERT

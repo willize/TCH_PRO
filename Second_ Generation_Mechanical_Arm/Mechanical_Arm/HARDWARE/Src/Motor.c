@@ -43,30 +43,34 @@ void Z_Set_AutoReload(u16 AutoReload)
 /*---------------------------设置电机速度------------------------------*/
 void X_Set_Speed(float speed)//单位 r/s
 {
-	u16 AutoReload;
-	float Pulses;
+	u16 AutoReload=0;
+	float Pulses=0.0f;
 	Pulses= speed * XY_SUBDIVISION;
-	AutoReload =(u16) 10000/Pulses;
+	AutoReload =(u16) 10000 / Pulses *100;
 	__HAL_TIM_SET_AUTORELOAD(&htim10, AutoReload);
 	__HAL_TIM_SET_COMPARE(&htim10,TIM_CHANNEL_1, AutoReload/2);
 }
 
 void Y_Set_Speed(float speed)
 {
-	u16 AutoReload;
-	float Pulses;
+	u16 AutoReload=0;
+	float Pulses=0.0f;
 	Pulses= speed * XY_SUBDIVISION;
-	AutoReload =(u16) 10000/Pulses;
+	printf("Y轴输出脉冲个数：%f\r\n",Pulses);
+	AutoReload =(u16) 10000 / Pulses *100;
+	printf("输出Y轴自动装载值：%d\r\n",AutoReload);
 	__HAL_TIM_SET_AUTORELOAD(&htim11, AutoReload);
 	__HAL_TIM_SET_COMPARE(&htim11,TIM_CHANNEL_1, AutoReload/2);
 }
 
 void Z_Set_Speed(float speed)
 {
-	u16 AutoReload;
-	float Pulses;
+	u16 AutoReload=0;
+	float Pulses=0.0f;
 	Pulses= speed * Z_SUBDIVISION;
-	AutoReload =(u16) 10000/Pulses;
+		printf("z轴输出脉冲个数：%f",Pulses);
+	AutoReload =(u16) 1000 / Pulses *1000;
+	printf("输出z轴自动装载值：%d",AutoReload);
 	__HAL_TIM_SET_AUTORELOAD(&htim13, AutoReload);
 	__HAL_TIM_SET_COMPARE(&htim13,TIM_CHANNEL_1, AutoReload/2);
 }
@@ -77,8 +81,8 @@ void XY_Set_Speed(float X_speed,float Y_speed )
 	float X_Pulses, Y_Pulses;
 	X_Pulses= X_speed * XY_SUBDIVISION;
 	Y_Pulses= Y_speed * XY_SUBDIVISION;
-	X_AutoReload = 10000/X_Pulses;
-	Y_AutoReload = 10000/Y_Pulses;
+	X_AutoReload = 10000 /X_Pulses *100;
+	Y_AutoReload = 10000 /Y_Pulses *100;
 	__HAL_TIM_SET_AUTORELOAD(&htim10, X_AutoReload);
 	__HAL_TIM_SET_COMPARE(&htim10,TIM_CHANNEL_1, X_AutoReload/2);
 	__HAL_TIM_SET_AUTORELOAD(&htim11, Y_AutoReload);
@@ -91,8 +95,8 @@ void XZ_Set_Speed(float X_speed,float Z_speed )
 	float X_Pulses, Z_Pulses;
 	X_Pulses= X_speed * XY_SUBDIVISION;
 	Z_Pulses= Z_speed * Z_SUBDIVISION;
-	X_AutoReload = 10000/X_Pulses;
-	Z_AutoReload = 10000/Z_Pulses;
+	X_AutoReload = 10000 /X_Pulses *100;
+	Z_AutoReload = 10000 /Z_Pulses *100;
 	__HAL_TIM_SET_AUTORELOAD(&htim10, X_AutoReload);
 	__HAL_TIM_SET_COMPARE(&htim10,TIM_CHANNEL_1, X_speed/2);
 	__HAL_TIM_SET_AUTORELOAD(&htim13, Z_AutoReload);
@@ -105,8 +109,8 @@ void YZ_Set_Speed(float Y_speed,float Z_speed )
 	float Y_Pulses, Z_Pulses;
 	Y_Pulses= Y_speed * XY_SUBDIVISION;
 	Z_Pulses= Z_speed * Z_SUBDIVISION;
-	Y_AutoReload = 10000/Y_Pulses;
-	Z_AutoReload = 10000/Z_Pulses;
+	Y_AutoReload = 10000 /Y_Pulses *100;
+	Z_AutoReload = 10000 /Z_Pulses *100;
 	__HAL_TIM_SET_AUTORELOAD(&htim11, Y_AutoReload);
 	__HAL_TIM_SET_COMPARE(&htim11,TIM_CHANNEL_1, Y_speed/2);
 	__HAL_TIM_SET_AUTORELOAD(&htim13, Z_AutoReload);
@@ -120,9 +124,9 @@ void XYZ_Set_Speeed(float X_speed , float Y_speed, float Z_speed )
 	X_Pulses= X_speed * XY_SUBDIVISION;
 	Y_Pulses= Y_speed * XY_SUBDIVISION;
 	Z_Pulses= Z_speed * Z_SUBDIVISION;
-	X_AutoReload = 10000/X_Pulses;
-	Y_AutoReload = 10000/Y_Pulses;
-	Z_AutoReload = 10000/Z_Pulses;
+	X_AutoReload = 10000 /X_Pulses *100;
+	Y_AutoReload = 10000 /Y_Pulses *100;
+	Z_AutoReload = 10000 /Z_Pulses *100;
 	__HAL_TIM_SET_AUTORELOAD(&htim10, X_AutoReload);
 	__HAL_TIM_SET_COMPARE(&htim10,TIM_CHANNEL_1, X_speed/2);
 	__HAL_TIM_SET_AUTORELOAD(&htim11, Y_AutoReload);

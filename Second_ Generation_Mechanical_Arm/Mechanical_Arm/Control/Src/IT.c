@@ -17,8 +17,8 @@ extern u8 X_run_point,Y_run_point,Z_run_point;     //运行的点位。
  u8 X_IT_point, Y_IT_point, Z_IT_point;             //运行到达，停止时中断的次数与运行点位对应。
  extern u8 max_run_point;                                 //最大的运行点数，应该由示教屏幕提供；
  
- u8 Teach_Status_flag=0;
- u8 Run_status_flag=1;
+ u8 Teach_Status_flag=1;
+ u8 Run_status_flag=0;
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
@@ -122,11 +122,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		/*-----------调试阶段--------------*/
 		if (Teach_Status_flag)
 		{
-			if (Z_IT_Num == Z_Num)
-			{
-				Z_Num = 0;
-				Z_Stop();
-			}
+			//printf("tiaoshi");
+//			if (Z_IT_Num == Z_Num)
+//			{
+//				Z_Num = 0;
+//				Z_Stop();
+//			}
 		}
 		/*----------运行阶段--------------*/
 	else if(Run_status_flag)

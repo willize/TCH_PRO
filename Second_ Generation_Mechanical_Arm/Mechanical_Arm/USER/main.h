@@ -41,34 +41,34 @@
 
 
 /*--------------------------------编码器--------------------------------------*/
-#define X_ENCODER_1_PIN GPIO_PIN_15
+#define X_ENCODER_1_PIN    GPIO_PIN_15
 #define X_ENCODER_1_GPIO   GPIOA
-#define X_ENCODER_2_PIN GPIO_PIN_3
+#define X_ENCODER_2_PIN    GPIO_PIN_3
 #define X_ENCODER_2_GPIO   GPIOB
 
-#define Y_ENCODER_1_PIN GPIO_PIN_6
+#define Y_ENCODER_1_PIN    GPIO_PIN_6
 #define Y_ENCODER_1_GPIO   GPIOC
-#define Y_ENCODER_2_PIN GPIO_PIN_7
+#define Y_ENCODER_2_PIN    GPIO_PIN_7
 #define Y_ENCODER_2_GPIO   GPIOC
 
-#define Z_ENCODER_1_PIN GPIO_PIN_0
+#define Z_ENCODER_1_PIN    GPIO_PIN_0
 #define Z_ENCODER_1_GPIO   GPIOA
-#define Z_ENCODER_2_PIN GPIO_PIN_1
+#define Z_ENCODER_2_PIN    GPIO_PIN_1
 #define Z_ENCODER_2_GPIO   GPIOA
 /******************************************************************************/
 
 /*----------------------------各轴电机的PWM通道-------------------------------*/
-#define X_PWM_PIN  GPIO_PIN_6
+#define X_PWM_PIN    GPIO_PIN_6
 #define X_PWM_GPIO   GPIOF
 
-#define Y_PWM_PIN  GPIO_PIN_7
+#define Y_PWM_PIN    GPIO_PIN_7
 #define Y_PWM_GPIO   GPIOF
 
-#define Z_PWM_PIN  GPIO_PIN_8
+#define Z_PWM_PIN    GPIO_PIN_8
 #define Z_PWM_GPIO   GPIOF
 /******************************************************************************/
 
-/*---------------------------TIM4-PWM波形产生通道------------------------------*/
+/*---------------------------TIM4-PWM波形产生通道-----------------------------*/
 #define PWM_1_PIN  GPIO_PIN_12
 #define PWM_1_GPIO GPIOD
 #define PWM_2_PIN  GPIO_PIN_13
@@ -108,15 +108,15 @@
 /******************************************************************************/
 
 /*---------------------------------SPI----------------------------------------*/
-#define SPI1_SCK_PIN   GPIO_PIN_5
-#define SPI1_SCK_GPIO  GPIOA
+#define SPI1_SCK_PIN    GPIO_PIN_5
+#define SPI1_SCK_GPIO   GPIOA
 #define SPI1_MISO_PIN   GPIO_PIN_6
 #define SPI1_MISO_GPIO  GPIOA
 #define SPI1_MOSI_PIN   GPIO_PIN_7
 #define SPI1_MOSI_GPIO  GPIOA
 
-#define SPI2_SCK_PIN   GPIO_PIN_13
-#define SPI2_SCK_GPIO  GPIOB
+#define SPI2_SCK_PIN    GPIO_PIN_13
+#define SPI2_SCK_GPIO   GPIOB
 #define SPI2_MISO_PIN   GPIO_PIN_2
 #define SPI2_MISO_GPIO  GPIOC
 #define SPI2_MOSI_PIN   GPIO_PIN_3
@@ -129,7 +129,7 @@
 #define X_R_LIMIT_GPIO  GPIOD
 
 #define Y_L_LIMIT_PIN   GPIO_PIN_2
-#define Y_L_LIMIT_GPIO    GPIOD
+#define Y_L_LIMIT_GPIO  GPIOD
 #define Y_R_LIMIT_PIN   GPIO_PIN_3
 #define Y_R_LIMIT_GPIO  GPIOD
 

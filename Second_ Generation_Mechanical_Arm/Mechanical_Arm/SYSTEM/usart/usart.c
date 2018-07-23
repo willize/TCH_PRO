@@ -113,7 +113,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if(huart->Instance==USART1)//如果是串口1
 	{
-		if (aRxBuffer[0]==0xa5) Handle_Flag = 1;
+		if (aRxBuffer[0]==0x66) Handle_Flag = 1;
 		
 		if ( Handle_Flag == 1)
 		{

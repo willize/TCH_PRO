@@ -38,6 +38,7 @@
 ..\obj\main.o: ..\HARDWARE\W25QXX\w25qxx.h
 ..\obj\main.o: ..\BSP\SPI\spi.h
 ..\obj\main.o: main.h
+..\obj\main.o: ..\HARDWARE\Inc\hmi.h
 ..\obj\main.o: ..\Control\Inc\SCARA_Alg.h
 ..\obj\main.o: ..\Control\Inc\SCARA_Control.h
 ..\obj\main.o: ..\HARDWARE\Inc\Motor.h
