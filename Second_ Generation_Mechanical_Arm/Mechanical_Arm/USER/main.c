@@ -16,9 +16,9 @@
 
 /* Private function prototypes -----------------------------------------------*/
 float Dis[3]={0,0,1000};
-s8 Dir[3]={0,0,1};
-	
-const u8 Text_Buffer[]={"Mechainel_ARM Flash and SPI Text"};
+s8    Dir[3]={0,0,1};
+
+const s8 Text_Buffer[]={0x01, 0x02, 0x05, 0x07, 0x09, 0x10};
 #define BUF_SIZE sizeof(Text_Buffer)
 /* Private functions ---------------------------------------------------------*/
 extern TIM_HandleTypeDef htim13;
@@ -32,9 +32,9 @@ extern u8 USART_RX_BUF[USART_REC_LEN];
 int main(void)
 {
 	u32 FLASH_SIZE;       //W25Q16的储存空间
-	u8 datatemp[BUF_SIZE];    //要读取的字符串
+	s8 datatemp[BUF_SIZE];    //要读取的字符串
 	u8 key=0;               //具体按键的返回值
-	u8 i,j=0;
+	u8 i;
 	u8 len=0;
 	
   HAL_Init();
@@ -66,13 +66,14 @@ int main(void)
 		if (key == KEY0_PRES)
 		{
 			printf ("写入W25Q16数据！\r\n");
-			W25QXX_Write((u8*)Text_Buffer,FLASH_SIZE-100,BUF_SIZE);
+			W25QXX_Write((s8*)Text_Buffer,FLASH_SIZE-100,BUF_SIZE);
 			printf ("写入完毕！！\r\n");
 		}
 		if (key == KEY1_PRES)
 		{
-			//printf ("读取W25Q16数据！\r\n");
-			//W25QXX_Read(datatemp,FLASH_SIZE-100,BUF_SIZE);
+			printf ("读取W25Q16数据！\r\n");
+			W25QXX_Read(datatemp,FLASH_SIZE-100,BUF_SIZE); 
+			printf ("数据为%s",datatemp);
 			//SCARA_Control( Dis,Dir);
 			tran_3_0xff();
 			//Z_Set_Speed(1.0f);
@@ -86,6 +87,9 @@ int main(void)
 //			}
 //			printf("\r\n");
 		}
+		
+		MechaArm_Run_Point_contr();
+		
 		i++;
 		delay_ms(10);
 		if (i==20)

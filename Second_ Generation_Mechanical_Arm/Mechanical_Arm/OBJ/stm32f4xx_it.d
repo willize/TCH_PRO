@@ -31,4 +31,5 @@
 ..\obj\stm32f4xx_it.o: ..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h
 ..\obj\stm32f4xx_it.o: ..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h
 ..\obj\stm32f4xx_it.o: ..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h
+..\obj\stm32f4xx_it.o: ..\SYSTEM\sys\sys.h
 ..\obj\stm32f4xx_it.o: stm32f4xx_it.h

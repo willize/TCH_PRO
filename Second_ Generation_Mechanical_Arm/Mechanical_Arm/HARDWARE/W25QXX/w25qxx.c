@@ -162,7 +162,7 @@ u16 W25QXX_ReadID(void)
 //pBuffer:数据存储区
 //ReadAddr:开始读取的地址(24bit)
 //NumByteToRead:要读取的字节数(最大65535)
-void W25QXX_Read(u8* pBuffer,u32 ReadAddr,u16 NumByteToRead)   
+void W25QXX_Read(s8* pBuffer,u32 ReadAddr,u16 NumByteToRead)   
 { 
  	u16 i;   										    
 	W25QXX_CS=0;                            //使能器件   
@@ -185,7 +185,7 @@ void W25QXX_Read(u8* pBuffer,u32 ReadAddr,u16 NumByteToRead)
 //pBuffer:数据存储区
 //WriteAddr:开始写入的地址(24bit)
 //NumByteToWrite:要写入的字节数(最大256),该数不应该超过该页的剩余字节数!!!	 
-void W25QXX_Write_Page(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite)
+void W25QXX_Write_Page(s8* pBuffer,u32 WriteAddr,u16 NumByteToWrite)
 {
  	u16 i;  
     W25QXX_Write_Enable();                  //SET WEL 
@@ -210,7 +210,7 @@ void W25QXX_Write_Page(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite)
 //WriteAddr:开始写入的地址(24bit)
 //NumByteToWrite:要写入的字节数(最大65535)
 //CHECK OK
-void W25QXX_Write_NoCheck(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite)   
+void W25QXX_Write_NoCheck(s8* pBuffer,u32 WriteAddr,u16 NumByteToWrite)   
 { 			 		 
 	u16 pageremain;	   
 	pageremain=256-WriteAddr%256; //单页剩余的字节数		 	    
@@ -237,7 +237,7 @@ void W25QXX_Write_NoCheck(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite)
 //WriteAddr:开始写入的地址(24bit)						
 //NumByteToWrite:要写入的字节数(最大65535)   
 u8 W25QXX_BUFFER[4096];		 
-void W25QXX_Write(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite)   
+void W25QXX_Write(s8* pBuffer,u32 WriteAddr,u16 NumByteToWrite)   
 { 
 	u32 secpos;
 	u16 secoff;

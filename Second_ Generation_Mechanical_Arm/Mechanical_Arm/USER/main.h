@@ -23,6 +23,7 @@
 /* Includes ------------------------------------------------------------------*/
 
 #include "stm32f4xx_hal.h"
+#include "sys.h"
 
 /* Exported types ------------------------------------------------------------*/
 //TIM_HandleTypeDef TIM2_Handler;      //X定时器句柄  //编码器定时器
@@ -140,6 +141,27 @@
 
 /******************************************************************************/
 /* Exported macro ------------------------------------------------------------*/
+
+typedef struct  ///示教时的单点距离
+{
+	s16 X_Odom;//Odometer
+	s16 Y_Odom;
+	s16 Z_Odom;
+} Odometer;
+
+typedef union  //运动点数组
+{
+	float Dist[50];
+	s8 dist[200];
+
+}odom;
+extern odom 	downl_x,
+			        downl_y,
+			        downl_z,           //下载运动点
+			        X_odom,
+			        Y_odom,
+			        Z_odom;            //调试后上传的运动点
+
 /* Exported functions ------------------------------------------------------- */
 void _Error_Handler(char *, int);
 

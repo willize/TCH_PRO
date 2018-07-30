@@ -4,7 +4,7 @@
 #include "sys.h"
 
 void Mechaical_Arm_Init(void);
-
+u16 MechaArm_Run_Point_contr(void);
 
 
 

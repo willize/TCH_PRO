@@ -19,7 +19,8 @@ extern u8 X_run_point,Y_run_point,Z_run_point;     //运行的点位。
  
  u8 Teach_Status_flag=1;
  u8 Run_status_flag=0;
-
+ extern u8 X_Dir,Y_Dir,Z_Dir;
+ 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	
@@ -27,14 +28,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 		X_Num++;
 		/*-----------调试阶段--------------*/
-		if (Teach_Status_flag)
-		{
-			if (X_IT_Num == X_Num)
-			{
-				X_Num = 0;
-				X_Stop();
-			}
-		}
+		if (Teach_Status_flag);
 		/*----------运行阶段--------------*/
 		else if(Run_status_flag)
 		{
@@ -73,14 +67,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
 		Y_Num++;
 		/*-----------调试阶段--------------*/
-		if (Teach_Status_flag)
-		{
-			if (Y_IT_Num == Y_Num)
-			{
-				Y_Num = 0;
-				Y_Stop();
-			}
-		}
+		if (Teach_Status_flag);
 		/*----------运行阶段--------------*/
 		else if(Run_status_flag)
 		{
@@ -120,15 +107,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		
 		Z_Num++;
 		/*-----------调试阶段--------------*/
-		if (Teach_Status_flag)
-		{
-			//printf("tiaoshi");
-//			if (Z_IT_Num == Z_Num)
-//			{
-//				Z_Num = 0;
-//				Z_Stop();
-//			}
-		}
+		if (Teach_Status_flag);
 		/*----------运行阶段--------------*/
 	else if(Run_status_flag)
 		{

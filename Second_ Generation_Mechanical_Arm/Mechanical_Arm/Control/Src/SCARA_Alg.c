@@ -28,39 +28,39 @@ void Motor_Max_Speed()
 }
 
 /**********************************************************************/
-void X_Run_Contorl(float Distance, s8 Dir)
+void X_Run_Contorl(float Dist)
 {
-	if (Dir >0)X_L_MOV();
-	else if(Dir <0)X_R_MOV();
+	if (Dist >0)X_R_MOV();
+	else if(Dist <0)X_L_MOV();
 	
-	X_Move_Angle(Distance);
+	X_Move_Angle(Dist);
 	X_Start();	
 }
-void Y_Run_Contorl(float Distance, s8 Dir)
+void Y_Run_Contorl(float Dist)
 {
-	if (Dir >0)Y_L_MOV();
-	else if(Dir <0)Y_R_MOV();
+	if (Dist >0)Y_R_MOV();
+	else if(Dist <0)Y_L_MOV();
 	
-	Y_Move_Angle(Distance);
+	Y_Move_Angle(Dist);
 	Y_Start();	
 }
-void Z_Run_Contorl(float Distance, s8 Dir)
+void Z_Run_Contorl(float Dist)
 {
-	printf("距离为%f,方向为%d\r\n",Distance,Dir);
-	if (Dir >0)Z_UP_MOV();
-	else if(Dir <0)Z_DOWN_MOV();
+	if (Dist >0)Z_UP_MOV();
+	else if(Dist <0)Z_DOWN_MOV();
 	
-	Z_Move_High(Distance);
+	Z_Move_High(Dist);
 	Z_Set_Speed(10.0f);
 	Z_Start();	
 }
 
-void SCARA_Control(float *Dist, s8 *Dirt)
+
+void SCARA_Control(float *X_Dist,float *Y_Dist,float *Z_Dist)
 { 
 	printf("SCARA_Control!\r\n");
-	X_Run_Contorl(*Dist, *Dirt);
-	Y_Run_Contorl(*(Dist+1), *(Dirt+1));
-	Z_Run_Contorl(*(Dist+2), *(Dirt+2));
+	X_Run_Contorl(*X_Dist);
+	Y_Run_Contorl(*Y_Dist);
+	Z_Run_Contorl(*Z_Dist);
 }
 
 void Coordinate_System(double XY_Angle,double YZ_Angle,double Z_Coor_High)
@@ -92,6 +92,10 @@ void MechanicalArm_Anti_Solution(double X_Coor, double Y_Coor,double Z_Coor)
 	XY_Angle = acos ( XY_acos_Operation )* 180.0 / PI;
 	Z_Coor_High = Z_Coor + Z_High - R_High;
 }
+
+
+
+
 
 
 

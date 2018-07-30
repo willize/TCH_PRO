@@ -64,9 +64,9 @@ void W25QXX_4ByteAddr_Enable(void);     //使能4字节地址模式
 void W25QXX_Write_SR(u8 regno,u8 sr);   //写状态寄存器
 void W25QXX_Write_Enable(void);  		//写使能 
 void W25QXX_Write_Disable(void);		//写保护
-void W25QXX_Write_NoCheck(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite);
-void W25QXX_Read(u8* pBuffer,u32 ReadAddr,u16 NumByteToRead);   //读取flash
-void W25QXX_Write(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite);//写入flash
+void W25QXX_Write_NoCheck(s8* pBuffer,u32 WriteAddr,u16 NumByteToWrite);
+void W25QXX_Read(s8* pBuffer,u32 ReadAddr,u16 NumByteToRead);   //读取flash
+void W25QXX_Write(s8* pBuffer,u32 WriteAddr,u16 NumByteToWrite);//写入flash
 void W25QXX_Erase_Chip(void);    	  	//整片擦除
 void W25QXX_Erase_Sector(u32 Dst_Addr);	//扇区擦除
 void W25QXX_Wait_Busy(void);           	//等待空闲

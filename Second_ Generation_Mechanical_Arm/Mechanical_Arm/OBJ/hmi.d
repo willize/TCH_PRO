@@ -32,6 +32,8 @@
 ..\obj\hmi.o: ..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h
 ..\obj\hmi.o: ..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h
 ..\obj\hmi.o: ..\Lib\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h
-..\obj\hmi.o: ..\SYSTEM\usart\usart.h
 ..\obj\hmi.o: ..\USER\main.h
+..\obj\hmi.o: ..\SYSTEM\usart\usart.h
 ..\obj\hmi.o: ..\HARDWARE\Inc\Motor.h
+..\obj\hmi.o: ..\SYSTEM\delay\delay.h
+..\obj\hmi.o: ..\HARDWARE\W25QXX\w25qxx.h
